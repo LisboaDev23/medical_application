@@ -1,5 +1,5 @@
-import { express } from "express";
-import AppointmentService from "../services/AppointmentService";
+import express from "express";
+import AppointmentService from "../services/AppointmentService.js";
 
 let router = express.Router();
 
@@ -17,7 +17,7 @@ router.get("/getAppointment/:id", async(req,res)=>{
     const {id} = req.params;
     try {
         const appointment = await AppointmentService.getAppointment(id);
-        res.send(appointments);
+        res.send(appointment);
     } catch (exception) {
         console.log(exception);
         res.status(500).send(exception);
@@ -47,6 +47,17 @@ router.put("/appointments/:id", async(req,res)=>{
     }
 });
 
-router.delete()
+router.delete("/deleteAppointment/:id", async(req, res) => {
+    const { id } = req.params;
 
-export default router();
+    try {
+        const appointment = await AppointmentService.deleteAppointment(id);
+        res.send(appointment);
+    }
+    catch (exception) {
+        console.log(exception);
+        res.status(500).send(exception);
+    }
+});
+
+export default router;
