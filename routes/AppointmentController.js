@@ -39,7 +39,7 @@ router.put("/appointments/:id", async(req,res)=>{
     const {id} = req.params;
     const {date, doctorId, pacientId} = req.params;
     try {
-        const appointment = await AppointmentService.updateAppointmentAppointment(id, {date, doctorId, pacientId});
+        const appointment = await AppointmentService.updateAppointment(id, {date, doctorId, pacientId});
         res.send(appointment);
     } catch (exception) {
         console.log(exception);
