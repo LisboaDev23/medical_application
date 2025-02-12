@@ -25,9 +25,9 @@ router.get("/getPacient/:id", async(req,res)=>{
 });
 
 router.post("/postPacient", async(req,res)=>{
-    const {pacientId, name, birthDate, email, phone} = req.params;
+    const {name, birthDate, email, phone} = req.params;
     try {
-        const pacient = await PacientService.savePacient({pacientId, name, birthDate, email, phone});
+        const pacient = await PacientService.savePacient({name, birthDate, email, phone});
         res.send(pacient);
     } catch (exception) {
         console.log(exception);
@@ -37,9 +37,9 @@ router.post("/postPacient", async(req,res)=>{
 
 router.put("/pacients/:id", async(req,res)=>{
     const {id} = req.params;
-    const {pacientId, name, birthDate, email, phone} = req.params;
+    const {name, birthDate, email, phone} = req.params;
     try {
-        const pacient = await PacientService.updatePacient(id, {pacientId, name, birthDate, email, phone});
+        const pacient = await PacientService.updatePacient(id, {name, birthDate, email, phone});
         res.send(pacient);
     } catch (exception) {
         console.log(exception);

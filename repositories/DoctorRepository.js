@@ -13,18 +13,18 @@ const getDoctor = async(id) => {
     }
 };
 
-const saveDoctor = async ({doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
+const saveDoctor = async ({name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
     try {
-        const doctor = new Doctor({doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+        const doctor = new Doctor({name, login, password, medicalSpecialty, medicalRegistration, email, phone});
         return await doctor.save();
     } catch (exception) {
         throw new Error("Doctor is not saved!", exception);
     }
 };
 
-const updateDoctor = async (id, {doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
+const updateDoctor = async (id, {name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
     try {
-        return await Doctor.findByIdAndUpdate(id, {doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone}, {new: true});
+        return await Doctor.findByIdAndUpdate(id, {name, login, password, medicalSpecialty, medicalRegistration, email, phone}, {new: true});
     } catch (exception) {
         throw new Error("Doctor not updated, review the informations and try again!", exception);
     }

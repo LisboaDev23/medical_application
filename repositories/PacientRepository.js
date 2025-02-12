@@ -9,24 +9,24 @@ const getPacient = async(id) => {
         return await Pacient.findById(id);
     }
     catch (exception) {
-        throw new Error(`Doctor not found where id ${id}`, exception);
+        throw new Error(`Pacient not found where id ${id}`, exception);
     }
 };
 
-const savePacient = async ({doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
+const savePacient = async ({name, birthDate, email, phone}) => {
     try {
-        const pacient = new Pacient({doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+        const pacient = new Pacient({name, birthDate, email, phone});
         return await pacient.save();
     } catch (exception) {
-        throw new Error("Doctor is not saved!", exception);
+        throw new Error("Pacient is not saved!", exception);
     }
 };
 
-const updatePacient = async (id, {doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
+const updatePacient = async (id, {name, birthDate, email, phone}) => {
     try {
-        return await Pacient.findByIdAndUpdate(id, {doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone}, {new: true});
+        return await Pacient.findByIdAndUpdate(id, {name, birthDate, email, phone}, {new: true});
     } catch (exception) {
-        throw new Error("Doctor not updated, review the informations and try again!", exception);
+        throw new Error("Pacient not updated, review the informations and try again!", exception);
     }
 };
 
@@ -34,7 +34,7 @@ const deletePacient = async (id) => {
     try {
         return await Pacient.findByIdAndUpdate(id);
     } catch (exception) {
-        throw new Error("Doctor is not deleted, try again!", exception);
+        throw new Error("Pacient is not deleted, try again!", exception);
     }
 };
 

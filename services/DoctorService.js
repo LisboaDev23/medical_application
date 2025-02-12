@@ -8,12 +8,12 @@ const getDoctor = async(id) => {
     return DoctorRepository.getDoctor(id);
 };
 
-const saveDoctor = async({doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
-    return DoctorRepository.saveDoctor({doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+const saveDoctor = async({name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
+    return DoctorRepository.saveDoctor({name, login, password, medicalSpecialty, medicalRegistration, email, phone});
 };
 
-const updateDoctor = async(id, {doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
-    return DoctorRepository.updateDoctor(id, {doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+const updateDoctor = async(id, {name, login, password, medicalSpecialty, medicalRegistration, email, phone}) => {
+    return DoctorRepository.updateDoctor(id, {name, login, password, medicalSpecialty, medicalRegistration, email, phone});
 };
 
 const deleteDoctor = async(id) => {

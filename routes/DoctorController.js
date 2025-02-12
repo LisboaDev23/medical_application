@@ -1,5 +1,6 @@
 import express from "express";
 import DoctorService from "../services/DoctorService.js"
+import bcrypt from 'bcrypt';
 
 let router = express.Router();
 
@@ -25,9 +26,10 @@ router.get("/getDoctor/:id", async(req,res)=>{
 });
 
 router.post("/postDoctor", async(req,res)=>{
-    const {doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.params;
+    const {name, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.params;
     try {
-        const doctor = await DoctorService.saveDoctor({doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const doctor = await DoctorService.saveDoctor({name, login, password: hashedPassword, medicalSpecialty, medicalRegistration, email, phone});
         res.send(doctor);
     } catch (exception) {
         console.log(exception);
@@ -37,9 +39,9 @@ router.post("/postDoctor", async(req,res)=>{
 
 router.put("/doctors/:id", async(req,res)=>{
     const {id} = req.params;
-    const {doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.params;
+    const {name, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.params;
     try {
-        const doctor = await DoctorService.updateDoctor(id, {doctorId, name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+        const doctor = await DoctorService.updateDoctor(id, {name, login, password, medicalSpecialty, medicalRegistration, email, phone});
         res.send(doctor);
     } catch (exception) {
         console.log(exception);
