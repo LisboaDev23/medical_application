@@ -13,9 +13,9 @@ router.get(
     }
 );
 
-router.use("/appointment", appointmentController);
-router.use("/doctor", doctorController);
-router.use("/pacient", pacientController);
-router.use("/prescription", prescriptionController);
+router.use("/", appointmentController);
+router.use("/", doctorController);
+router.use("/", pacientController);
+router.use("/", prescriptionController);
 
 export default router;

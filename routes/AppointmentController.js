@@ -6,7 +6,7 @@ let router = express.Router();
 router.get("/appointments", async(req,res)=>{
     try {
         const appointments = await AppointmentService.getAllAppointments();
-        res.send(appointments);
+        res.status(200).send(appointments);
     } catch (exception) {
         console.log(exception);
         res.status(500).send(exception);
@@ -17,7 +17,7 @@ router.get("/getAppointment/:id", async(req,res)=>{
     const {id} = req.params;
     try {
         const appointment = await AppointmentService.getAppointment(id);
-        res.send(appointment);
+        res.status(200).send(appointment);
     } catch (exception) {
         console.log(exception);
         res.status(500).send(exception);
@@ -25,10 +25,10 @@ router.get("/getAppointment/:id", async(req,res)=>{
 });
 
 router.post("/postAppointment", async(req,res)=>{
-    const {date, doctorId, pacientId} = req.params;
+    const {date, doctorId, pacientId} = req.body;
     try {
         const appointment = await AppointmentService.saveAppointment({date, doctorId, pacientId});
-        res.send(appointment);
+        res.status(201).send(appointment);
     } catch (exception) {
         console.log(exception);
         res.status(500).send(exception);
@@ -37,10 +37,10 @@ router.post("/postAppointment", async(req,res)=>{
 
 router.put("/appointments/:id", async(req,res)=>{
     const {id} = req.params;
-    const {date, doctorId, pacientId} = req.params;
+    const {date, doctorId, pacientId} = req.body;
     try {
         const appointment = await AppointmentService.updateAppointment(id, {date, doctorId, pacientId});
-        res.send(appointment);
+        res.status(200).send(appointment);
     } catch (exception) {
         console.log(exception);
         res.status(500).send(exception);
@@ -52,7 +52,7 @@ router.delete("/deleteAppointment/:id", async(req, res) => {
 
     try {
         const appointment = await AppointmentService.deleteAppointment(id);
-        res.send(appointment);
+        res.status(200).send(appointment);
     }
     catch (exception) {
         console.log(exception);

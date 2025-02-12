@@ -6,7 +6,7 @@ let router = express.Router();
 router.get("/pacients", async(req,res)=>{
     try {
         const pacients = await PacientService.getAllPacients();
-        res.send(pacients);
+        res.status(200).send(pacients);
     } catch (exception) {
         console.log(exception);
         res.status(500).send(exception);
@@ -17,7 +17,7 @@ router.get("/getPacient/:id", async(req,res)=>{
     const {id} = req.params;
     try {
         const pacient = await PacientService.getPacient(id);
-        res.send(pacient);
+        res.status(200).send(pacient);
     } catch (exception) {
         console.log(exception);
         res.status(500).send(exception);
@@ -25,10 +25,10 @@ router.get("/getPacient/:id", async(req,res)=>{
 });
 
 router.post("/postPacient", async(req,res)=>{
-    const {name, birthDate, email, phone} = req.params;
+    const {name, birthDate, email, phone} = req.body;
     try {
         const pacient = await PacientService.savePacient({name, birthDate, email, phone});
-        res.send(pacient);
+        res.status(201).send(pacient);
     } catch (exception) {
         console.log(exception);
         res.status(500).send(exception);
@@ -37,10 +37,10 @@ router.post("/postPacient", async(req,res)=>{
 
 router.put("/pacients/:id", async(req,res)=>{
     const {id} = req.params;
-    const {name, birthDate, email, phone} = req.params;
+    const {name, birthDate, email, phone} = req.body;
     try {
         const pacient = await PacientService.updatePacient(id, {name, birthDate, email, phone});
-        res.send(pacient);
+        res.status(200).send(pacient);
     } catch (exception) {
         console.log(exception);
         res.status(500).send(exception);
@@ -52,7 +52,7 @@ router.delete("/deletePacient/:id", async(req, res) => {
 
     try {
         const pacient = await PacientService.deletePacient(id);
-        res.send(pacient);
+        res.status(200).send(pacient);
     }
     catch (exception) {
         console.log(exception);
