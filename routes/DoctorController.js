@@ -33,7 +33,7 @@ router.post("/postDoctor", async(req,res)=>{
         res.status(201).send(doctor);
     } catch (exception) {
         console.log(exception);
-        res.status(500).send("Não foi possível cadastrar o médico!" + exception);
+        res.status(500).send("Não foi possível cadastrar o médico! " + exception);
     }
 });
 
