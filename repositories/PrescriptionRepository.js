@@ -15,8 +15,8 @@ const getPrescription = async(id) => {
 
 const savePrescription = async ({date, appointmentId, medicine, dosage, instructions}) => {
     try {
-        const pacient = new Prescription({date, appointmentId, medicine, dosage, instructions});
-        return await pacient.save();
+        const prescription = new Prescription({date, appointmentId, medicine, dosage, instructions});
+        return await prescription.save();
     } catch (exception) {
         throw new Error("Doctor is not saved!", exception);
     }
