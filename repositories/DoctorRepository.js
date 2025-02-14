@@ -32,7 +32,7 @@ const updateDoctor = async (id, {name, login, password, medicalSpecialty, medica
 
 const deleteDoctor = async (id) => {
     try {
-        return await Doctor.findByIdAndUpdate(id);
+        return await Doctor.findByIdAndDelete(id);
     } catch (exception) {
         throw new Error("Doctor is not deleted, try again!", exception);
     }

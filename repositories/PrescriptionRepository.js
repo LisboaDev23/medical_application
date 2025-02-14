@@ -32,7 +32,7 @@ const updatePrescription = async (id, {date, appointmentId, medicine, dosage, in
 
 const deletePrescription = async (id) => {
     try {
-        return await Prescription.findByIdAndUpdate(id);
+        return await Prescription.findByIdAndDelete(id);
     } catch (exception) {
         throw new Error("Doctor is not deleted, try again!", exception);
     }
