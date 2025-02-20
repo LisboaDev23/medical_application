@@ -16,7 +16,7 @@ const Schema = mongoose.Schema;
             required:[true,'Pacient email is required!']
         },
         phone: {
-            type: Number,
+            type: String,
             required:[true,' Pacient phone number is required!'],
             validate: {
                 validator: (v) => {
