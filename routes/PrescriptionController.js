@@ -35,6 +35,18 @@ router.post("/postPrescription", async(req,res)=>{
     }
 });
 
+router.get("/generatePrescription/:id", async(req,res) => {
+    const {id} = req.params;
+    try {
+        const prescription = await PrerscriptionService.getPrescription(id);
+        const generatedPrescription = await PrerscriptionService.generatePrescriptionFile(prescription);
+        res.send(generatedPrescription);
+    } catch (exception) {
+        console.log(exception);
+        res.status(500).send(exception);
+    }
+});
+
 router.put("/prescriptions/:id", async(req,res)=>{
     const {id} = req.params;
     const {date, appointmentId, medicine, dosage, instructions} = req.body;
