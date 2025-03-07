@@ -17,8 +17,8 @@ const savePrescription = async({date, appointmentId, medicine, dosage, instructi
     return await PrescriptionRepository.savePrescription({date, appointmentId, medicine, dosage, instructions});
 };
 
-const updatePrescription = async(id, {date, appointmentId, medicine, dosage, instructions}) => {
-    return await PrescriptionRepository.updatePrescription(id, {date, appointmentId, medicine, dosage, instructions});
+const updatePrescription = async(id, {date, appointmentId, medicine, dosage, instructions, file}) => {
+    return await PrescriptionRepository.updatePrescription(id, {date, appointmentId, medicine, dosage, instructions, file});
 };
 
 const deletePrescription = async(id) => {

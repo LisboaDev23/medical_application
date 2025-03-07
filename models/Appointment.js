@@ -6,8 +6,7 @@ const Schema = mongoose.Schema;
 
     const appointmentSchema = new Schema ({
         date: {
-            type: Date,
-            required: [true,'Appointment Date is required!']
+            type: Date
         },
         doctorId: {
             type: String,

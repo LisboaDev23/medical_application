@@ -24,6 +24,9 @@ const Schema = mongoose.Schema;
         createdAt: {
             type: Date,
             default: Date.now
+        },
+        file: {
+            type: String
         }
     });
 
