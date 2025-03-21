@@ -34,8 +34,8 @@ router.post('/login', async(req,res) => {
         res.status(200).json({token});
     }
     catch (exception) {
-        console.log(error);
-        res.status(500).json({error: 'Login Failed!'});
+        console.log(exception);
+        res.status(500).json({exception: 'Login Failed!'});
     }
 });
 
